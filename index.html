@@ -11,11 +11,20 @@
 <body>
   <section class="task task1">
     <h2 class="task__header task1__header">Task 1</h2>
-    <input class="visually-hidden" type="checkbox" id="task1__checkbox"></input>
-    <label class="task1__btn task1__btn-css" for="task1__checkbox">CSS only</label>
-    <button class="task1__btn task1__btn-js">JS only</button>
-    <button class="task1__btn task1__btn-css-js">CSS & JS</button>
-    <div class="task1__square" id="black-square"></div>
+    <div class="task1__square-wrapper">
+      <div class="task1__square" id="black-square"></div>
+    </div>
+    <ul class="task1__buttons">
+      <li class="task1__button">
+        <button class="task1__btn task1__btn-css">CSS</button>
+      </li>
+      <li class="task1__button">
+        <button class="task1__btn task1__btn-js">JS only</button>
+      </li>
+      <li class="task1__button">
+        <button class="task1__btn task1__btn-css-js">CSS & JS</button>
+      </li>
+    </ul>
   </section>
 
   <script src="script.js"></script>
