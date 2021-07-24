@@ -381,6 +381,14 @@ function createLiElement(url) {
 
 //* Task 10
 
+const xNum = document.querySelector(".task10__x-num");
+const yNum = document.querySelector(".task10__y-num");
+
+document.addEventListener("mousemove", function(evt) {
+  xNum.innerText = evt.clientX;
+  yNum.innerText = evt.clientY;
+});
+
 //* Task 11
 
 //* Task 12
