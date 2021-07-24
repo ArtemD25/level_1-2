@@ -231,9 +231,77 @@ body {
 
 /** Task 5 */ 
 
+.task5__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.task5__wrapper .square {
+  margin-bottom: 30px;
+
+  background-color: yellow;
+}
+
 /** Task 6 */ 
 
+.task6__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.task6__wrapper .square {
+  margin-bottom: 30px;
+
+  background-color: red;
+}
+
 /** Task 7 */ 
+
+.task7__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.task7__wrapper .square {
+  margin-bottom: 30px;
+
+  background-color: green;
+}
+
+.task7__descr {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.task7__input {
+  border: 2px solid transparent;
+  padding: 5px 10px;
+
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  color: #ffffff;
+  font-size: 14px;
+
+  border-radius: 10px;
+  background-color: salmon;
+
+  transition: ease-out 200ms;
+}
+
+.task7__input::placeholder {
+  color: #ffffff;
+}
+
+.task7__input:focus {
+  border: 2px solid salmon;
+
+  color: salmon;
+  background-color: #ffffff;
+  outline: none;
+  box-shadow: 2px 2px 0 1px salmon, -2px -2px 0 1px salmon, -2px 2px 0 1px salmon, 2px -2px 0 1px salmon;
+}
 
 /** Task 8 */ 
 

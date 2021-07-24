@@ -155,9 +155,88 @@ function makeSquaresShareText() {
 
 //* Task 5
 
+const btnTask5 = document.querySelector(".task5__btn");
+const squareTask5 = document.querySelector(".task5__wrapper .square");
+
+btnTask5.addEventListener("click", firstFunction);
+
+/**
+ * Reveals hidden square and alerts message to user.
+ * After that, creates a new event listener for the button
+ */
+function firstFunction() {
+  if (squareTask5.classList.contains("hidden")) {
+    squareTask5.classList.remove("hidden");
+  }
+  alert("Hello!");
+  btnTask5.innerText = "Hide me!";
+
+  btnTask5.removeEventListener("click", firstFunction);
+  btnTask5.addEventListener("click", secondFunction);
+}
+
+/**
+ * Hides square and creates a new event listener for
+ * the button after that
+ */
+function secondFunction() {
+  squareTask5.classList.add("hidden");
+  btnTask5.innerText = "Show me and alert message!";
+
+  btnTask5.removeEventListener("click", secondFunction);
+  btnTask5.addEventListener("click", firstFunction);
+}
+
 //* Task 6
 
+const btnTask6 = document.querySelector(".task6__btn");
+const squareTask6 = document.querySelector(".task6__wrapper .square");
+
+/**
+ * Hides square when the mouse is hovered over it
+ */
+btnTask6.addEventListener("mouseover", function() {
+  squareTask6.classList.add("hidden");
+});
+
+/**
+ * Shows square when the mouse is hovered over smth but the square
+ */
+btnTask6.addEventListener("mouseout", function() {
+  squareTask6.classList.remove("hidden");
+});
+
 //* Task 7
+
+const inputTask7 = document.querySelector(".task7__input");
+const squareTask7 = document.querySelector(".task7__wrapper .square");
+
+/**
+ * Shows the square when the input is focused
+ */
+inputTask7.addEventListener("focus", function() {
+  if (squareTask7.classList.contains("hidden")) {
+    squareTask7.classList.remove("hidden");
+  }
+});
+
+/**
+ * Hides the square when user starts typing smth in the input
+ */
+inputTask7.addEventListener("input", function() {
+  if (!squareTask7.classList.contains("hidden")) {
+    squareTask7.classList.add("hidden");
+  }
+});
+
+/**
+ * Hides the square when looses focus over the input
+ */
+inputTask7.addEventListener("blur", function() {
+  if (!squareTask7.classList.contains("hidden")) {
+    squareTask7.classList.add("hidden");
+  }
+});
 
 //* Task 8
 
