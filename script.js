@@ -240,6 +240,56 @@ inputTask7.addEventListener("blur", function() {
 
 //* Task 8
 
+const inputTask8 = document.querySelector(".task8__input");
+const btnTask8 = document.querySelector(".task8__btn");
+const btnPasteTask8 = document.querySelector(".task8__btn--paste");
+const squareTask8 = document.querySelector(".task8__square-wrapper .square");
+
+/**
+ * Gets input user provided and sets it as background image of the square.
+ * If there is no image, the script displays an error.
+ */
+btnTask8.addEventListener("click", function() {
+  const url = inputTask8.value;
+  squareTask8.innerHTML = null;
+  squareTask8.style.backgroundImage = `url(${url})`;
+  checkImage(url);
+  inputTask8.value = "";
+});
+
+/**
+ * Checks wether there is any image under user link
+ * 
+ * @param {string} url is the user provided url of an image
+ */
+function checkImage(url) {
+  const img = new Image();
+  img.src = url;
+  img.onerror = displayErrorMessage;
+}
+
+/**
+ * Creates and display error message if there is no image
+ * under user link
+ */
+function displayErrorMessage() {
+  squareTask8.style.backgroundImage = "";
+    const text = document.createTextNode("Error occured");
+    const span = document.createElement("span");
+    span.appendChild(text);
+    squareTask8.appendChild(span);
+    squareTask8.style.display = "grid";
+    squareTask8.style.placeItems = "center";
+    squareTask8.style.color = "red";
+}
+
+/**
+ * Pastes an url of a photo with raccoons to the input
+ */
+btnPasteTask8.addEventListener("click", function() {
+  inputTask8.value = "https://www.epsilontheory.com/wp-content/uploads/raccoons-gang.jpg";
+});
+
 //* Task 9
 
 //* Task 10
