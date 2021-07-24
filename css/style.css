@@ -21,14 +21,6 @@ body {
   text-align: left;
 }
 
-.task1__buttons {
-  display: flex;
-  justify-content: center;
-  padding: 0;
-
-  list-style-type: none;
-}
-
 .btn {
   border: 2px solid transparent;
   padding: 10px 20px;
@@ -40,10 +32,6 @@ body {
   background-color: salmon;
 
   transition: ease-out 200ms
-}
-
-.task1__button:not(:last-of-type) {
-  margin: 0 20px 0 0;
 }
 
 .btn:hover {
@@ -61,13 +49,28 @@ body {
   transform: scale(0.9);
 }
 
+/** Task 1 */ 
+
+.task1__button:not(:last-of-type) {
+  margin: 0 20px 0 0;
+}
+
+.task1__buttons {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+
+  list-style-type: none;
+}
+
 .task1__square-wrapper {
   min-height: 100px;
   margin: 0 0 30px 0;
 }
 
 .task1__square,
-.task2__square {
+.task2__square,
+.task3__square {
   width: 100px;
   height: 100px;
   margin: 0 auto;
@@ -76,7 +79,9 @@ body {
   visibility: visible;
 }
 
-.task2_wrapper {
+/** Task 2 */ 
+
+.task2__wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,6 +90,61 @@ body {
 .task2__square {
   margin-bottom: 30px;
 }
+
+/** Task 3 */ 
+
+.task3__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.task3__squares {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 0 30px 0;
+  padding: 0;
+
+  list-style-type: none;
+}
+
+.task3__square:not(:last-of-type) {
+  margin: 0 20px 0 0;
+}
+
+.task3__square:last-of-type {
+  margin: 0;
+}
+
+/** Task 4 */ 
+
+
+/** Task 5 */ 
+
+/** Task 6 */ 
+
+/** Task 7 */ 
+
+/** Task 8 */ 
+
+/** Task 9 */ 
+
+/** Task 10 */ 
+
+/** Task 11 */ 
+
+/** Task 12 */ 
+
+/** Task 13 */ 
+
+/** Task 14 */ 
+
+/** Task 15 */ 
+
+/** Task 16 */ 
+
+/** Task 17 */ 
 
 .hidden {
   visibility: hidden;
