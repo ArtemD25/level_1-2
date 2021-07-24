@@ -3,7 +3,13 @@
 }
 
 body {
-  padding: 50px 100px;
+  padding: 30px 100px 0;
+}
+
+.task {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #000000;
 }
 
 .task__header {
@@ -15,20 +21,15 @@ body {
   text-align: left;
 }
 
-.task {
-  border-bottom: 1px solid #000000;
-}
-
 .task1__buttons {
   display: flex;
   justify-content: center;
-  margin: 0 0 30px 0;
   padding: 0;
 
   list-style-type: none;
 }
 
-.task1__button button {
+.btn {
   border: 2px solid transparent;
   padding: 10px 20px;
 
@@ -45,14 +46,14 @@ body {
   margin: 0 20px 0 0;
 }
 
-.task1__btn:hover {
+.btn:hover {
   border: 2px solid salmon;
 
   color: salmon;
   background-color: #ffffff;
 }
 
-.task1__btn:active {
+.btn:active {
   border: 2px solid salmon;
 
   color: salmon;
@@ -65,13 +66,24 @@ body {
   margin: 0 0 30px 0;
 }
 
-.task1__square {
+.task1__square,
+.task2__square {
   width: 100px;
   height: 100px;
   margin: 0 auto;
 
   background-color: #000000;
   visibility: visible;
+}
+
+.task2_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.task2__square {
+  margin-bottom: 30px;
 }
 
 .hidden {
