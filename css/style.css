@@ -189,43 +189,43 @@ body {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
-.pink {
+[data-color="pink"] {
   background-color: pink;
 }
 
-.pink::after {
-  content: "pink";
+[data-color="pink"]::after {
+  content: attr(data-color);
 }
 
-.red {
+[data-color="red"] {
   background-color: red;
 }
 
-.red::after {
+[data-color="red"]::after {
   content: "red";
 }
 
-.blue {
+[data-color="blue"] {
   background-color: blue;
 }
 
-.blue::after {
+[data-color="blue"]::after {
   content: "blue";
 }
 
-.green {
+[data-color="green"] {
   background-color: green;
 }
 
-.green::after {
+[data-color="green"]::after {
   content: "green";
 }
 
-.yellow {
+[data-color="yellow"] {
   background-color: yellow;
 }
 
-.yellow::after {
+[data-color="yellow"]::after {
   content: "yellow";
 }
 

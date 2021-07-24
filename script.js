@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 //* Task 1
 
@@ -77,14 +77,23 @@ btnTask3.addEventListener("click", function() {
 
 const btnTask4 = document.querySelector(".task4__btn");
 const inputTask4 = document.getElementById("task4__input");
+const squaresTask4 = document.querySelectorAll(".task4__squares .square");
 
+makeSquaresShareText();
+
+/**
+ * Catches clicks on the task 4 button. If there is a square with
+ * the selector a user specified in the input, the script hides
+ * such square. If not, the script displays an error as the input`s
+ * placeholder.
+ */
 btnTask4.addEventListener("click", function() {
-  const inputValue = inputTask4.value;
+  const inputValue = getInputValue();
   const squareSelector = ".task4__squares " + "." + inputValue;
 
   if (!inputValue) {
     inputTask4.value = "";
-    inputTask4.placeholder = `Enter proper value`;
+    inputTask4.placeholder = "Enter proper value";
     return;
   }
   
@@ -94,14 +103,55 @@ btnTask4.addEventListener("click", function() {
     inputTask4.value = "";
     inputTask4.placeholder = `Element .${inputValue} does not exist`;
   }
+  
 });
 
+/**
+ * Checks wether a user submitted a dot
+ * in the beginning of the input value.
+ * Deletes it if he/she did.
+ * 
+ * @returns selector name without a dot
+ * in the beginning if there was any
+ */
+function getInputValue() {
+  let inputValue = inputTask4.value;
+
+  if (inputValue[0] === ".") {
+    return inputValue.slice(1);
+  } else {
+    return inputValue;
+  }
+}
+
+/**
+ * Checks whether the document has an
+ * element with such selector or not.
+ * 
+ * @param {string} squareSelector is the selector
+ * to be checked.
+ * @returns true if such selector exists.
+ */
 function isThereSuchSelector(squareSelector) {
   if (document.querySelector(squareSelector) !== null) {
     return true;
   }
   return false;
 }
+
+/**
+ * Makes all colored squares in task 4 to paste the
+ * value of their data-color attributes to the
+ * input`s value
+ */
+function makeSquaresShareText() {
+  for (let square of squaresTask4) {
+    square.addEventListener("click", function() {
+      inputTask4.value = square.getAttribute("data-color");
+    });
+  }
+}
+
 
 //* Task 5
 
