@@ -443,6 +443,18 @@ body {
 
 /** Task 11 */ 
 
+.task11__text {
+  font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+  font-size: 40px;
+  text-align: center;
+}
+
+.task11__lang {
+  font-weight: 700;
+  font-family: 'Anonymous Pro', 'Courier New', monospace;
+  text-transform: uppercase;
+}
+
 /** Task 12 */ 
 
 /** Task 13 */ 
@@ -454,6 +466,8 @@ body {
 /** Task 16 */ 
 
 /** Task 17 */ 
+
+/** Task 18 */ 
 
 .hidden {
   visibility: hidden;

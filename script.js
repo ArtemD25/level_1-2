@@ -384,6 +384,9 @@ function createLiElement(url) {
 const xNum = document.querySelector(".task10__x-num");
 const yNum = document.querySelector(".task10__y-num");
 
+/**
+ * Writes mouse x- and y-coordinates each time mouse moves
+ */
 document.addEventListener("mousemove", function(evt) {
   xNum.innerText = evt.clientX;
   yNum.innerText = evt.clientY;
@@ -391,9 +394,21 @@ document.addEventListener("mousemove", function(evt) {
 
 //* Task 11
 
+document.querySelector(".task11__lang").innerText = navigator.language;
+
+
+
 //* Task 12
 
 //* Task 13
 
 //* Task 14
+
+//* Task 15
+
+//* Task 16
+
+//* Task 17
+
+//* Task 18
 
