@@ -274,8 +274,9 @@ function checkImage(url) {
  */
 function displayErrorMessage() {
   squareTask8.style.backgroundImage = "";
-    const text = document.createTextNode("Error occured");
+    const text = document.createTextNode("Image not found");
     const span = document.createElement("span");
+    span.style.textAlign = "center";
     span.appendChild(text);
     squareTask8.appendChild(span);
     squareTask8.style.display = "grid";
