@@ -293,6 +293,92 @@ btnPasteTask8.addEventListener("click", function() {
 
 //* Task 9
 
+const inputTask9 = document.querySelector(".task9__input");
+const btnTask9 = document.querySelector(".task9__btn");
+const btnCopyTask9 = document.querySelector(".task9__btn--copy");
+const imageContainer = document.querySelector(".task9__images");
+const links = [
+  "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
+  "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80",
+  "https://i.pinimg.com/originals/83/64/66/83646654668bf9ae412f45bb2e417ddf.jpg",
+  "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aW5kaWF8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80",
+  "https://st.depositphotos.com/1428083/2946/i/600/depositphotos_29460297-stock-photo-bird-cage.jpg",
+  "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
+]
+
+/**
+ * Copies to clipboard default links
+ */
+btnCopyTask9.addEventListener("click", function() {
+  navigator.clipboard.writeText(links.join("\n"));
+});
+
+/**
+ * Makes display-button parse user input and display images
+ */
+btnTask9.addEventListener("click", parseTextAreaInput);
+
+/**
+ * Deletes all previous li elements, splits user
+ * input string by new lines, checks strings for being
+ * links to images and displays images if found any
+ */
+function parseTextAreaInput() {
+  clearAllLiElements();
+  const urlsArray = inputTask9.value.split("\n");
+  checkImgAndDisplay(urlsArray);
+}
+
+/**
+ * Deletes all li-elements
+ */
+function clearAllLiElements() {
+  let liElements = imageContainer.children;
+  let amount = liElements.length;
+
+  for (let i = 0; i < amount; i++) {
+    liElements[0].remove();
+  }
+}
+
+/**
+ * Checks strings for being links to images
+ * 
+ * @param {array} urlsArray 
+ */
+function checkImgAndDisplay(urlsArray) {
+  for (let url of urlsArray) {
+    const img = new Image();
+    img.src = url;
+    img.onload = displayImg(url);
+  }
+}
+
+/**
+ * Gets a li-element and adds it to the
+ * image container (ul)
+ * 
+ * @param {string} url 
+ */
+function displayImg(url) {
+  const li = createLiElement(url);
+  imageContainer.appendChild(li);
+}
+
+/**
+ * Creates a li-element and sets its 
+ * background0image proprety to the
+ * url provided
+ * 
+ * @param {string} url 
+ * @returns 
+ */
+function createLiElement(url) {
+  const li = document.createElement("li");
+  li.style.backgroundImage = `url(${url})`;
+  return li;
+}
+
 //* Task 10
 
 //* Task 11
