@@ -146,11 +146,21 @@
 
   <section class="task task13">
     <h2 class="task__header task13__header">Task 13</h2>
-    <ul class="task13__input-wrapper">
-      <li class="task13__input task13__input--ls" contenteditable="true" placeholder="I'm Editable. Edit me!"></li>
-      <li class="task13__input task13__input--ck" contenteditable="true">I'm Editable. Edit me!</li>
-      <li class="task13__input task13__input--ss" contenteditable="true">I'm Editable. Edit me!</li>
+    <ul class="task13__inputs-wrapper">
+      <li class="task13__input-wrapper">
+        <div class="task13__input  task13__input--ls" contenteditable="true"></div>
+        <p class="taks13__input-caption">localStorage</p>
+      </li>
+      <li class="task13__input-wrapper">
+        <div class="task13__input  task13__input--ck" contenteditable="true"></div>
+        <p class="taks13__input-caption">cookies</p>
+      </li>
+      <li class="task13__input-wrapper">
+        <div class="task13__input  task13__input--ss" contenteditable="true"></div>
+        <p class="taks13__input-caption">sessionStorage</p>
+      </li>
     </ul>
+    <button class="btn task13__reload">Reload page</button>
   </section>
 
   <script src="script.js"></script>

@@ -403,8 +403,12 @@ const longitudeText = document.querySelector(".task12__longitude");
 
 displayLocation();
 
+/**
+ * Checks wether the user` browser supposrts geolocation.
+ * If supposrts, it tries to get user`s location and display it.
+ * If failed or if browser does not support it, displays error message
+ */
 function displayLocation() {
-
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showLocation, handleError);
   } else {
@@ -412,11 +416,19 @@ function displayLocation() {
   }
 }
 
+/**
+ * Displays user`s location
+ * 
+ * @param {object} position 
+ */
 function showLocation(position) {
   latitudeText.innerText = position.coords.latitude;
   longitudeText.innerText = position.coords.longitude;
 }
 
+/**
+ * Displays error message if failed to load user`s location
+ */
 function handleError() {
   latitudeText.style.color = "red";
   longitudeText.style.color = "red";
@@ -426,6 +438,15 @@ function handleError() {
 }
 
 //* Task 13
+
+const btnTask13 = document.querySelector(".task13__reload");
+const inputTask13LocalStorage = document.querySelector(".task13__input--ls");
+const inputTask13Cookies = document.querySelector(".task13__input--ck");
+const inputTask13SessionStorage = document.querySelector(".task13__input--ss");
+
+btnTask13.addEventListener("click", function() {
+  document.location.reload();
+});
 
 //* Task 14
 
