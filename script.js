@@ -396,9 +396,34 @@ document.addEventListener("mousemove", function(evt) {
 
 document.querySelector(".task11__lang").innerText = navigator.language;
 
-
-
 //* Task 12
+
+const latitudeText = document.querySelector(".task12__latitude");
+const longitudeText = document.querySelector(".task12__longitude");
+
+displayLocation();
+
+function displayLocation() {
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showLocation, handleError);
+  } else {
+    handleError
+  }
+}
+
+function showLocation(position) {
+  latitudeText.innerText = position.coords.latitude;
+  longitudeText.innerText = position.coords.longitude;
+}
+
+function handleError() {
+  latitudeText.style.color = "red";
+  longitudeText.style.color = "red";
+
+  latitudeText.innerText = "Couldn`t get your location =(";
+  longitudeText.innerText = "Couldn`t get your location =(";
+}
 
 //* Task 13
 
