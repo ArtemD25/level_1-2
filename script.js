@@ -444,9 +444,86 @@ const inputTask13LocalStorage = document.querySelector(".task13__input--ls");
 const inputTask13Cookies = document.querySelector(".task13__input--ck");
 const inputTask13SessionStorage = document.querySelector(".task13__input--ss");
 
+/**
+ * Makes the "Reload button" reload the web page
+ */
 btnTask13.addEventListener("click", function() {
   document.location.reload();
 });
+
+/**
+ * Makes browser to paste saved text if any to boxes
+ * when web page is loaded
+ */
+document.addEventListener("DOMContentLoaded", function() {
+  inputTask13LocalStorage.innerText = localStorage.getItem("task13_input_ls");
+  getCookieData();
+  inputTask13SessionStorage.innerText = sessionStorage.getItem("task13_input_ss");
+});
+
+/**
+ * Gets all cookies, looks for the right one and
+ * pastes saved text to the relevant box
+ */
+function getCookieData() {
+  const cookieArr = document.cookie.split("; ");
+  let data = getSavedData(cookieArr);
+  if (data) {
+    inputTask13Cookies.innerText = data;
+  } else {
+    inputTask13Cookies.innerText = "";
+  }
+}
+
+/**
+ * Analyzes all cookies presented as an array for having
+ * the key of 'task13_input_ck'. If found, returns its value.
+ * If not, returns an empty string.
+ * 
+ * @param {array} cookieArr 
+ * @returns an empty string if did not find the right cookie.
+ * Returns cookie`s value if found the right cookie.
+ */
+function getSavedData(cookieArr) {
+  for (let cookie of cookieArr) {
+    let equalSignIndex = cookie.indexOf("=");
+    if (cookie.slice(0, equalSignIndex) === "task13_input_ck") {
+      return cookie.slice(equalSignIndex + 1);
+    }
+  }
+  return "";
+}
+
+/**
+ * Makes browser to save data before user reloads page
+ */
+window.addEventListener("unload", function() {
+  saveDataToLocalStorage();
+  saveDataToCookie();
+  saveDataToSessionStorage();
+});
+
+/**
+ * Saves data to localStorage
+ */
+function saveDataToLocalStorage() {
+  localStorage.setItem("task13_input_ls", inputTask13LocalStorage.innerText);
+}
+
+/**
+ * Saves data to cookie
+ */
+ function saveDataToCookie() {
+  const date = new Date(Date.now() + 86400e3).toUTCString;
+  document.cookie = `task13_input_ck=${inputTask13Cookies.innerText}; expires=${date}`;
+}
+
+/**
+ * Saves data to sessionStorage
+ */
+function saveDataToSessionStorage() {
+  sessionStorage.setItem("task13_input_ss", inputTask13SessionStorage.innerText);
+}
 
 //* Task 14
 

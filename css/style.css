@@ -489,6 +489,7 @@ body {
 
 .task13__input-wrapper {
   flex-basis: 30%;
+  max-width: 30%;
 }
 
 .task13__input {
