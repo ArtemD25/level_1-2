@@ -560,7 +560,7 @@ const divOuterTask15 = document.querySelector(".task15__outer-block");
  * Makes the browser to alert the 'data-name' attribute`s content 
  * of the inner div. Besides that, it stops further event bubbling
  */
-divInnerTask15.addEventListener("click", function() {
+divInnerTask15.addEventListener("click", function(evt) {
   evt.stopPropagation();
   alert(`You clicked on ${this.getAttribute("data-name")}`);
 })
