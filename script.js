@@ -574,8 +574,26 @@ divOuterTask15.addEventListener("click", function() {
 })
 
 
-
 //* Task 16
+
+const modalTask16 = document.querySelector(".task16__modal");
+const btnTask16 = document.querySelector(".task16__show-modal");
+
+/**
+ * Shows modal and prevents the web page from scrolling
+ */
+btnTask16.addEventListener("click", function() {
+  modalTask16.style.display = "block";
+  document.body.style.overflow = "hidden";
+});
+
+/**
+ * Hides modal and allows the web page to be scrolled
+ */
+modalTask16.addEventListener("click", function() {
+  modalTask16.style.display = "none";
+  document.body.style.overflow = "auto";
+});
 
 //* Task 17
 
