@@ -521,7 +521,46 @@ body {
 
 /** Task 14 */ 
 
+.task14__back-to-top {
+  position: fixed;
+  right: 2%;
+  bottom: 5%;
+
+  display: none;
+  max-width: 80px;
+  padding: 5px;
+
+  font-size: 14px;
+
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(250, 128, 114, 0.7);
+}
+
+.task14__back-to-top:hover {
+  border-color: rgba(250, 128, 114, 0.7);
+  color: rgba(250, 128, 114, 0.7);
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
 /** Task 15 */ 
+
+.task15__outer-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+  border: 1px solid salmon;
+
+  background-color: rgba(250, 128, 114, 0.7);
+}
+
+.task15__inner-block {
+  width: 40%;
+  height: 50px;
+  border: 1px solid blue;
+
+  background-color: rgba(0, 0, 255, 0.7);
+}
 
 /** Task 16 */ 
 

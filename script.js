@@ -56,7 +56,7 @@ const blackSquare2 = document.querySelector(".task2__wrapper .square");
  */
 btnTask2.addEventListener("click", function() {
   blackSquare2.classList.toggle("hidden");
-})
+});
 
 //* Task 3
 
@@ -304,7 +304,7 @@ const links = [
   "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aW5kaWF8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80",
   "https://st.depositphotos.com/1428083/2946/i/600/depositphotos_29460297-stock-photo-bird-cage.jpg",
   "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlZHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
-]
+];
 
 /**
  * Copies to clipboard default links
@@ -358,7 +358,7 @@ function checkImgAndDisplay(urlsArray) {
  * Gets a li-element and adds it to the
  * image container (ul)
  * 
- * @param {string} url 
+ * @param {string} url is the link to an image
  */
 function displayImg(url) {
   const li = createLiElement(url);
@@ -370,7 +370,7 @@ function displayImg(url) {
  * background0image proprety to the
  * url provided
  * 
- * @param {string} url 
+ * @param {string} url is a link to an image
  * @returns 
  */
 function createLiElement(url) {
@@ -419,7 +419,7 @@ function displayLocation() {
 /**
  * Displays user`s location
  * 
- * @param {object} position 
+ * @param {object} position is the object containing user`s position data
  */
 function showLocation(position) {
   latitudeText.innerText = position.coords.latitude;
@@ -480,7 +480,8 @@ function getCookieData() {
  * the key of 'task13_input_ck'. If found, returns its value.
  * If not, returns an empty string.
  * 
- * @param {array} cookieArr 
+ * @param {array} cookieArr is an array with all cookies
+ * separated by '; '
  * @returns an empty string if did not find the right cookie.
  * Returns cookie`s value if found the right cookie.
  */
@@ -527,7 +528,52 @@ function saveDataToSessionStorage() {
 
 //* Task 14
 
+const btnToTop14 = document.querySelector(".task14__back-to-top");
+
+/**
+ * Makes the browser hide the "get to the top" button if
+ * user has not scrolled yet and show it if user scrolled
+ */
+document.addEventListener("scroll", function() {
+  if (pageYOffset !== 0) {
+    btnToTop14.style.display = "block";
+  } else {
+    btnToTop14.style.display = "none";
+  }
+});
+
+/**
+ * Makes the browser smoothly scroll the page up to the top
+ */
+btnToTop14.addEventListener("click", function() {
+  document.body.scrollIntoView({
+    behavior: "smooth"
+  });
+});
+
 //* Task 15
+
+const divInnerTask15 = document.querySelector(".task15__inner-block");
+const divOuterTask15 = document.querySelector(".task15__outer-block");
+
+/**
+ * Makes the browser to alert the 'data-name' attribute`s content 
+ * of the inner div. Besides that, it stops further event bubbling
+ */
+divInnerTask15.addEventListener("click", function() {
+  evt.stopPropagation();
+  alert(`You clicked on ${this.getAttribute("data-name")}`);
+})
+
+/**
+ * Makes the browser to alert the 'data-name' attribute`s content 
+ * of the inner div
+ */
+divOuterTask15.addEventListener("click", function() {
+  alert(`You clicked on ${this.getAttribute("data-name")}`);
+})
+
+
 
 //* Task 16
 
