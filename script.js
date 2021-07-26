@@ -611,6 +611,7 @@ btnTask17.addEventListener("click", function(evt) {
 const dropContainer = document.querySelector(".task18__label");
 const fileInput = document.querySelector("#task18__input");
 const btnTask18 = document.querySelector(".task18__btn");
+const messageTask18 = document.querySelector(".task18__message");
 
 dropContainer.ondragover = dropContainer.ondragenter = function(evt) {
   evt.preventDefault();
@@ -620,6 +621,7 @@ dropContainer.ondrop = function(evt) {
   fileInput.files = evt.dataTransfer.files;
   dropContainer.classList.add("task18__file");
   dropContainer.innerText = evt.dataTransfer.files[0].name;
+  messageTask18.classList.remove("hidden");
   evt.preventDefault();
 };
 
@@ -627,5 +629,6 @@ btnTask18.addEventListener("click", function() {
   fileInput.value = "";
   dropContainer.classList.remove("task18__file");
   dropContainer.innerText = "Choose file to upload";
+  messageTask18.classList.add("hidden");
 });
 
