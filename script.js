@@ -597,5 +597,35 @@ modalTask16.addEventListener("click", function() {
 
 //* Task 17
 
+const btnTask17 = document.querySelector(".task17__submit");
+
+/**
+ * Prevents page from being reloaded
+ */
+btnTask17.addEventListener("click", function(evt) {
+  evt.preventDefault();
+});
+
 //* Task 18
+
+const dropContainer = document.querySelector(".task18__label");
+const fileInput = document.querySelector("#task18__input");
+const btnTask18 = document.querySelector(".task18__btn");
+
+dropContainer.ondragover = dropContainer.ondragenter = function(evt) {
+  evt.preventDefault();
+};
+
+dropContainer.ondrop = function(evt) {
+  fileInput.files = evt.dataTransfer.files;
+  dropContainer.classList.add("task18__file");
+  dropContainer.innerText = evt.dataTransfer.files[0].name;
+  evt.preventDefault();
+};
+
+btnTask18.addEventListener("click", function() {
+  fileInput.value = "";
+  dropContainer.classList.remove("task18__file");
+  dropContainer.innerText = "Choose file to upload";
+});
 

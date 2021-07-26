@@ -584,7 +584,88 @@ body {
 
 /** Task 17 */ 
 
+.task16__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /** Task 18 */ 
+
+.task18__input-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.task18__label {
+  margin: 0 0 20px 0;
+  padding: 10px 20px;
+  border-bottom: 1px solid salmon;
+
+  font-family: 'Anonymous Pro', 'Courier New', monospace;
+  font-size: 24px;
+  color:#3a3a3a;
+  background-color: transparent;
+  cursor: pointer;
+
+  transition: ease-out 200ms;
+}
+
+.task18__label:hover {
+  letter-spacing: 5px;
+}
+
+.task18__message {
+  font-family: 'Anonymous Pro', 'Courier New', monospace;
+  font-size: 16px;
+  color:#3a3a3a;
+}
+
+.task18__file {
+  color: salmon;
+  font-weight: 700;
+}
+
+.task18__btn {
+  position: relative;
+  top: -5px;
+
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  vertical-align: baseline;
+  border: none;
+
+  border-radius: 100%;
+  background-color: red;
+  cursor: pointer;
+}
+
+.task18__btn::before,
+.task18__btn::after {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 13px;
+  height: 2px;
+
+  background-color: #ffffff;
+}
+
+.task18__btn::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.task18__btn::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
 
 .hidden {
   visibility: hidden;
