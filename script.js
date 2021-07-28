@@ -617,7 +617,12 @@ dropContainer.ondragover = dropContainer.ondragenter = function(evt) {
   evt.preventDefault();
 };
 
+dropContainer.addEventListener("dragenter", function() {
+  dropContainer.classList.add("ondrag");
+});
+
 dropContainer.ondrop = function(evt) {
+  dropContainer.classList.remove("ondrag");
   fileInput.files = evt.dataTransfer.files;
   dropContainer.classList.add("task18__file");
   dropContainer.innerText = evt.dataTransfer.files[0].name;
@@ -631,4 +636,36 @@ btnTask18.addEventListener("click", function() {
   dropContainer.innerText = "Choose file to upload";
   messageTask18.classList.add("hidden");
 });
+
+//* Task 19
+
+const dropContainer19 = document.querySelector(".task19__label");
+const fileInput19 = document.querySelector("#task19__input");
+const btnTask19 = document.querySelector(".task19__btn");
+const messageTask19 = document.querySelector(".task19__message");
+
+dropContainer19.ondragover = dropContainer19.ondragenter = function(evt) {
+  evt.preventDefault();
+};
+
+dropContainer19.addEventListener("dragenter", function() {
+  dropContainer19.classList.add("ondrag19");
+});
+
+dropContainer19.ondrop = function(evt) {
+  dropContainer19.classList.remove("ondrag19");
+  fileInput19.files = evt.dataTransfer.files;
+  dropContainer19.classList.add("task19__file");
+  dropContainer19.innerText = evt.dataTransfer.files[0].name;
+  messageTask19.classList.remove("hidden");
+  evt.preventDefault();
+};
+
+btnTask19.addEventListener("click", function() {
+  fileInput19.value = "";
+  dropContainer19.classList.remove("task19__file");
+  dropContainer19.innerText = "Choose file to upload";
+  messageTask19.classList.add("hidden");
+});
+
 

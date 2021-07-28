@@ -608,6 +608,7 @@ body {
   font-size: 24px;
   color:#3a3a3a;
   background-color: transparent;
+  border-radius: 5px;
   cursor: pointer;
 
   transition: ease-out 200ms;
@@ -663,6 +664,92 @@ body {
 
 .task18__btn::after {
   transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.ondrag {
+  background-color: rgb(252, 132, 119, 0.2);
+  box-shadow: 0 0 5px 10px rgb(252, 132, 119, 0.2);
+}
+
+/** Task 19 */ 
+
+.task19__input-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.task19__label {
+  margin: 0 0 20px 0;
+  padding: 10px 20px;
+  border-bottom: 1px solid rgb(50,205,50);
+
+  font-family: 'Anonymous Pro', 'Courier New', monospace;
+  font-size: 24px;
+  color:#3a3a3a;
+  background-color: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+
+  transition: ease-out 200ms;
+}
+
+.task19__label:hover {
+  letter-spacing: 5px;
+}
+
+.task19__message {
+  font-family: 'Anonymous Pro', 'Courier New', monospace;
+  font-size: 16px;
+  color:#3a3a3a;
+}
+
+.task19__file {
+  color: rgb(50,205,50);
+  font-weight: 700;
+}
+
+.task19__btn {
+  position: relative;
+  top: -5px;
+
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  vertical-align: baseline;
+  border: none;
+
+  border-radius: 100%;
+  background-color: red;
+  cursor: pointer;
+}
+
+.task19__btn::before,
+.task19__btn::after {
+  content: "";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 13px;
+  height: 2px;
+
+  background-color: #ffffff;
+}
+
+.task19__btn::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.task19__btn::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.ondrag19 {
+  background-color: rgb(50,205,50, 0.2);
+  box-shadow: 0 0 5px 10px rgb(50,205,50, 0.2);
 }
 
 
