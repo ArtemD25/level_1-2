@@ -165,7 +165,8 @@
 
   <section class="task task14">
     <h2 class="task__header task14__header">Task 14</h2>
-    <p class="task14__text">This part seems to be doing nothing...but indeed this section created the button you always see in the right bottom corner that alows you to get back to the top of the page</p>
+    <p class="task14__text">This part seems to be doing nothing...but indeed this section created the button you always
+      see in the right bottom corner that alows you to get back to the top of the page</p>
     <button class="btn task14__back-to-top">Back to the top</button>
   </section>
 
@@ -199,16 +200,40 @@
     <div class="task18__input-wrapper">
       <label class="task18__label" for="task18__input">Choose file to upload</label>
       <input class="visually-hidden" type="file" id="task18__input">
-      <p class="task18__message hidden">Drag'n'drop another file if this one is not right or click here to reset <button class="task18__btn" aria-label="Button clear all files from input"></button></p>
+      <p class="task18__message hidden">Drag'n'drop another file if this one is not right or click here to reset <button
+          class="task18__btn" aria-label="Button clear all files from input"></button></p>
     </div>
   </section>
 
   <section class="task task19">
     <h2 class="task__header task19__header">Task 19: CSV</h2>
     <div class="task19__input-wrapper">
-      <label class="task19__label" for="task19__input">Choose file to upload</label>
-      <input class="visually-hidden" type="file" id="task19__input">
-      <p class="task19__message hidden">Drag'n'drop another file if this one is not right or click here to reset <button class="task19__btn" aria-label="Button clear all files from input"></button></p>
+      <label class="task19__label" for="inputTask19">Choose file to upload</label>
+      <input class="inputTask19" type="file" id="inputTask19" hidden>
+      <p class="task19__message hidden">Drag'n'drop another file if this one is not right or click here to reset <button
+          class="task19__btn" aria-label="Button clear all files from input"></button></p>
+      <ul class="task19__instruction">
+        <li>
+          <label>You should either type any text in Ukrainian contaning Ukrainian cities in the first box or click on
+            this button to insert random text automaticaly<button class="pasteRandomTextTask19 btn">Paste random
+              text</button></label>
+        </li>
+        <li>Upload CSV-file provided with this code</li>
+        <li>
+          <label>Launch script modifying your text by clicking on this button<button class="parseFileTask19 btn">Modify
+              my text</button></label>
+        </li>
+        <li>
+          <label>Clear contents of the box to type smth new there<button
+              class="clearBoxTask19 btn">Clear</button></label>
+        </li>
+      </ul>
+      <div class="task19__textarea-wrapper">
+        <textarea class="rawTextTask19" name="rawTextTask19" cols="20" rows="7"
+          placeholder="Type here text mentioning any Ukrainian cities"></textarea>
+        <textarea class="modifiedTextTask19" name="modifiedTextTask19" cols="20" rows="7"
+          placeholder="Here you`ll get modified text" readonly></textarea>
+      </div>
     </div>
   </section>
 

@@ -630,6 +630,15 @@ dropContainer.ondrop = function(evt) {
   evt.preventDefault();
 };
 
+fileInput.onchange = function(evt) {
+  dropContainer.classList.remove("ondrag");
+  fileInput.files = fileInput.files;
+  dropContainer.classList.add("task18__file");
+  dropContainer.innerText = fileInput.files[0].name;
+  messageTask18.classList.remove("hidden");
+  evt.preventDefault();
+};
+
 btnTask18.addEventListener("click", function() {
   fileInput.value = "";
   dropContainer.classList.remove("task18__file");
@@ -639,10 +648,133 @@ btnTask18.addEventListener("click", function() {
 
 //* Task 19
 
-const dropContainer19 = document.querySelector(".task19__label");
-const fileInput19 = document.querySelector("#task19__input");
-const btnTask19 = document.querySelector(".task19__btn");
 const messageTask19 = document.querySelector(".task19__message");
+const btnTaskClose19 = document.querySelector(".task19__btn");
+const dropContainer19 = document.querySelector(".task19__label");
+const inputFile = document.querySelector(".inputTask19");
+const btnTask19 = document.querySelector(".parseFileTask19");
+const inputTask19 = document.querySelector(".rawTextTask19");
+const outputTask19 = document.querySelector(".modifiedTextTask19");
+const pasteTextTask19 = document.querySelector(".pasteRandomTextTask19");
+const clearBtnTask19 = document.querySelector(".clearBoxTask19");
+const randomTextArray = [
+  "Київ, Маріуполь, Черкаси та Харків",
+  "Алушта - це чудове місто на березі моря, але далеко від Запоріжжя!",
+  "Вінниця не стоїть на морі, а от Одеса - як раз навпаки",
+  "Черкаси знаходяться у Черкаській області =) А Миколаїв - ні",
+  "Львів - перлина західної України. Поруч ще є Луцьк. А от Донецьк - далеко",
+  "Кажуть, у м. Харків багато парків",
+];
+
+/**
+ * Uploads a CSV-file, parses it and gets top-10 cities by their population.
+ * Each city-object has information on its coordinates, its name and population.
+ * After that the script analyzes user text input and looks for cities names in it.
+ * If any, the script substitutes those names by new sentences. 
+ */
+btnTask19.addEventListener("click", function() {
+  let resultFunction;
+
+  let promise = new Promise(function(resolve) {
+    let file = inputFile.files[0];
+    let reader = new FileReader();
+    reader.readAsText(file);
+
+    reader.onload = function() {
+      let citiesArray = reader.result.split("\n")
+      .map(function(item) {
+        let userInputArr = item.split(",");
+        let obj = {};
+        obj.x = parseFloat(defineValue(0, userInputArr));
+        obj.y = parseFloat(defineValue(1, userInputArr));
+        obj.city = defineValue(2, userInputArr);
+        obj.population = +(defineValue(3, userInputArr).replaceAll(" ", ""));
+        return (item = obj);
+      })
+      .filter(function(item) {
+        if (item.city === "" || item.population === "") {
+          return false;
+        }
+        return true;
+      })
+      .sort(function(city1, city2) {
+        return (city2.population - city1.population);
+      })
+      .slice(0, 10)
+      .reduce(function(obj, item, index) {
+        obj[item.city] = {
+            x: item.x,
+            y: item.y,
+            population: item.population,
+            rating: index,
+        };
+        return obj;
+      }, {});
+
+      resultFunction = (cityName) => {
+        if (citiesArray[cityName] === undefined) {
+          return cityName;
+        } else {
+          let newString = `${cityName} (${citiesArray[cityName].rating + 1}-місце серед ТОП-10 найбільших міст України, населення - ${citiesArray[cityName].population} чол.)`;
+          return newString;
+        }
+      }
+      resolve(resultFunction);
+    };
+
+    reader.onerror = function() {
+      outputTask19.innerText = reader.error;
+    };
+
+  });
+
+  promise.then(function(resultFunction) {
+    let userInputArr = inputTask19.value.split(" ");
+
+    userInputArr = userInputArr.map(function(item) {
+      let newString = resultFunction(item);
+  
+      if (newString === item) {
+        return ( resultFunction(item.slice(0, item.length - 1)) + item.slice(item.length - 1));
+      } else {
+        return newString;
+      }
+    });
+
+    outputTask19.innerText = userInputArr.join(" ");
+  });  
+});
+
+/**
+ * Defines whether a particular word shall be deemed as a property of a city
+ * or it is an empty string or a comment and shall be not included to the object
+ * 
+ * @param {integer} index is the index of an item from the city-object 
+ * @param {array} arr is the array consisting of words parsed from the CSV-file 
+ * @returns a word representing a property of a city and not an empty string or a comment
+ */
+function defineValue(index, arr) {
+  if (arr.length >= 4) {
+    let item = arr[index];
+    if (item === "" || item.indexOf("#") === 0) {
+      return "";
+    } else {
+      return item;
+    }
+  }
+  return "";
+}
+
+clearBtnTask19.addEventListener("click", function() {
+  inputTask19.value = "";
+});
+
+function pasteRandomText() {
+  let index = Math.floor(Math.random() * randomTextArray.length);
+  inputTask19.value = randomTextArray[index];
+}
+
+pasteTextTask19.addEventListener("click", pasteRandomText);
 
 dropContainer19.ondragover = dropContainer19.ondragenter = function(evt) {
   evt.preventDefault();
@@ -654,18 +786,25 @@ dropContainer19.addEventListener("dragenter", function() {
 
 dropContainer19.ondrop = function(evt) {
   dropContainer19.classList.remove("ondrag19");
-  fileInput19.files = evt.dataTransfer.files;
+  inputFile.files = evt.dataTransfer.files;
   dropContainer19.classList.add("task19__file");
   dropContainer19.innerText = evt.dataTransfer.files[0].name;
   messageTask19.classList.remove("hidden");
   evt.preventDefault();
 };
 
-btnTask19.addEventListener("click", function() {
-  fileInput19.value = "";
+inputFile.onchange = function(evt) {
+  dropContainer19.classList.remove("ondrag19");
+  inputFile.files = inputFile.files;
+  dropContainer19.classList.add("task19__file");
+  dropContainer19.innerText = inputFile.files[0].name;
+  messageTask19.classList.remove("hidden");
+  evt.preventDefault();
+};
+
+btnTaskClose19.addEventListener("click", function() {
+  inputFile.value = "";
   dropContainer19.classList.remove("task19__file");
   dropContainer19.innerText = "Choose file to upload";
   messageTask19.classList.add("hidden");
 });
-
-
