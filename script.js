@@ -617,18 +617,31 @@ dropContainer.ondragover = dropContainer.ondragenter = function(evt) {
   evt.preventDefault();
 };
 
+/**
+ * Makes the file drop area to be highlighted when user hovers a file over it.
+ */
 dropContainer.addEventListener("dragenter", function() {
   if (!dropContainer.classList.contains("ondrag")) {
     dropContainer.classList.add("ondrag");
   }
 });
 
+/**
+ * Makes the file drop area to stop being highlighted when user hovers out a file of it.
+ */
 dropContainer.addEventListener("dragleave", function() {
   if (dropContainer.classList.contains("ondrag")) {
     dropContainer.classList.remove("ondrag");
   }
 });
 
+/**
+ * When user dropped a file in the drop area, the area removes its highlight,
+ * pastes the dropped file`s name as its inner text and shows up the button
+ * to clear the file input if needed
+ * 
+ * @param {object} evt is the event object helping to get access to the selected file
+ */
 dropContainer.ondrop = function(evt) {
   dropContainer.classList.remove("ondrag");
   fileInput.files = evt.dataTransfer.files;
@@ -638,6 +651,13 @@ dropContainer.ondrop = function(evt) {
   evt.preventDefault();
 };
 
+/**
+ * When user selected a file in the drop area, the area removes its highlight,
+ * pastes the selected file`s name as its inner text and shows up the button
+ * to clear the file input if needed
+ * 
+ * @param {object} evt is the event object helping to get access to the selected file
+ */
 fileInput.onchange = function(evt) {
   dropContainer.classList.remove("ondrag");
   fileInput.files = fileInput.files;
@@ -647,6 +667,11 @@ fileInput.onchange = function(evt) {
   evt.preventDefault();
 };
 
+/**
+ * Removes dropped / selected file from the input,
+ * hides the clear-input-button and gets back the default
+ * text in the file input
+ */
 btnTask18.addEventListener("click", function() {
   fileInput.value = "";
   dropContainer.classList.remove("task18__file");
@@ -788,18 +813,31 @@ dropContainer19.ondragover = dropContainer19.ondragenter = function(evt) {
   evt.preventDefault();
 };
 
+/**
+ * Makes the file drop area to be highlighted when user hovers a file over it.
+ */
 dropContainer19.addEventListener("dragenter", function() {
   if (!dropContainer19.classList.contains("ondrag19")) {
     dropContainer19.classList.add("ondrag19");
   }
 });
 
+/**
+ * Makes the file drop area to stop being highlighted when user hovers out a file of it.
+ */
 dropContainer19.addEventListener("dragleave", function() {
   if (dropContainer19.classList.contains("ondrag19")) {
     dropContainer19.classList.remove("ondrag19");
   }
 });
 
+/**
+ * When user dropped a file in the drop area, the area removes its highlight,
+ * pastes the dropped file`s name as its inner text and shows up the button
+ * to clear the file input if needed
+ * 
+ * @param {object} evt is the event object helping to get access to the dropped file
+ */
 dropContainer19.ondrop = function(evt) {
   dropContainer19.classList.remove("ondrag19");
   inputFile.files = evt.dataTransfer.files;
@@ -809,6 +847,13 @@ dropContainer19.ondrop = function(evt) {
   evt.preventDefault();
 };
 
+/**
+ * When user selected a file in the drop area, the area removes its highlight,
+ * pastes the selected file`s name as its inner text and shows up the button
+ * to clear the file input if needed
+ * 
+ * @param {object} evt is the event object helping to get access to the selected file
+ */
 inputFile.onchange = function(evt) {
   dropContainer19.classList.remove("ondrag19");
   inputFile.files = inputFile.files;
@@ -818,6 +863,11 @@ inputFile.onchange = function(evt) {
   evt.preventDefault();
 };
 
+/**
+ * Removes dropped / selected file from the input,
+ * hides the clear-input-button and gets back the default
+ * text in the file input
+ */
 btnTaskClose19.addEventListener("click", function() {
   inputFile.value = "";
   dropContainer19.classList.remove("task19__file");
