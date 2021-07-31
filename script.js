@@ -618,7 +618,15 @@ dropContainer.ondragover = dropContainer.ondragenter = function(evt) {
 };
 
 dropContainer.addEventListener("dragenter", function() {
-  dropContainer.classList.add("ondrag");
+  if (!dropContainer.classList.contains("ondrag")) {
+    dropContainer.classList.add("ondrag");
+  }
+});
+
+dropContainer.addEventListener("dragleave", function() {
+  if (dropContainer.classList.contains("ondrag")) {
+    dropContainer.classList.remove("ondrag");
+  }
 });
 
 dropContainer.ondrop = function(evt) {
@@ -781,7 +789,15 @@ dropContainer19.ondragover = dropContainer19.ondragenter = function(evt) {
 };
 
 dropContainer19.addEventListener("dragenter", function() {
-  dropContainer19.classList.add("ondrag19");
+  if (!dropContainer19.classList.contains("ondrag19")) {
+    dropContainer19.classList.add("ondrag19");
+  }
+});
+
+dropContainer19.addEventListener("dragleave", function() {
+  if (dropContainer19.classList.contains("ondrag19")) {
+    dropContainer19.classList.remove("ondrag19");
+  }
 });
 
 dropContainer19.ondrop = function(evt) {

@@ -25,7 +25,6 @@
 *.log
 *.sql
 *.sqlite
-cities.csv
 
 # OS generated files #
 ######################
