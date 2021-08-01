@@ -691,12 +691,12 @@ const outputTask19 = document.querySelector(".modifiedTextTask19");
 const pasteTextTask19 = document.querySelector(".pasteRandomTextTask19");
 const clearBtnTask19 = document.querySelector(".clearBoxTask19");
 const randomTextArray = [
-  "Київ, Маріуполь, Черкаси та Харків",
-  "Алушта - це чудове місто на березі моря, але далеко від Запоріжжя!",
-  "Вінниця не стоїть на морі, а от Одеса - як раз навпаки",
-  "Черкаси знаходяться у Черкаській області =) А Миколаїв - ні",
-  "Львів - перлина західної України. Поруч ще є Луцьк. А от Донецьк - далеко",
-  "Кажуть, у м. Харків багато парків",
+  "...Київ, Маріуполь, Черкаси та Харків...",
+  "Алушта(!) - це чудове місто на березі моря, але далеко від Запоріжжя(!)",
+  "Вінниця не стоїть на морі, а от Одеса(так-так) - як раз навпаки",
+  "Черкаси знаходяться у Черкаській області =) А Миколаїв-ні",
+  "Львів-перлина західної України. Поруч ще є Луцьк. А от Донецьк(( - далеко",
+  "Кажуть, у м. Харків\\ багато парків",
 ];
 
 /**
@@ -707,6 +707,7 @@ const randomTextArray = [
  */
 btnTask19.addEventListener("click", function() {
   let resultFunction;
+  let citiesArray;
 
   let promise = new Promise(function(resolve) {
     let file = inputFile.files[0];
@@ -714,7 +715,7 @@ btnTask19.addEventListener("click", function() {
     reader.readAsText(file);
 
     reader.onload = function() {
-      let citiesArray = reader.result.split("\n")
+      citiesArray = reader.result.split("\n")
       .map(function(item) {
         let userInputArr = item.split(",");
         let obj = {};
@@ -745,13 +746,9 @@ btnTask19.addEventListener("click", function() {
       }, {});
 
       resultFunction = (cityName) => {
-        if (citiesArray[cityName] === undefined) {
-          return cityName;
-        } else {
-          let newString = `${cityName} (${citiesArray[cityName].rating + 1}-місце серед ТОП-10 найбільших міст України, населення - ${citiesArray[cityName].population} чол.)`;
-          return newString;
-        }
+        return (`${cityName} (${citiesArray[cityName].rating + 1}-місце серед ТОП-10 найбільших міст України, населення - ${citiesArray[cityName].population} чол.)`);
       }
+
       resolve(resultFunction);
     };
 
@@ -762,19 +759,10 @@ btnTask19.addEventListener("click", function() {
   });
 
   promise.then(function(resultFunction) {
-    let userInputArr = inputTask19.value.split(" ");
-
-    userInputArr = userInputArr.map(function(item) {
-      let newString = resultFunction(item);
-  
-      if (newString === item) {
-        return ( resultFunction(item.slice(0, item.length - 1)) + item.slice(item.length - 1));
-      } else {
-        return newString;
-      }
+    const keys = Object.keys(citiesArray).join("|");
+    outputTask19.innerText = inputTask19.value.replace(new RegExp(keys, "gi"), (cityName) => {
+      return resultFunction(cityName);
     });
-
-    outputTask19.innerText = userInputArr.join(" ");
   });  
 });
 
@@ -800,6 +788,7 @@ function defineValue(index, arr) {
 
 clearBtnTask19.addEventListener("click", function() {
   inputTask19.value = "";
+  outputTask19.value = "";
 });
 
 function pasteRandomText() {
